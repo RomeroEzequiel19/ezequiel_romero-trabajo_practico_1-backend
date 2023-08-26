@@ -4,14 +4,15 @@ const router = require("express").Router();
 const { validacionUsuario } = require("../middlewares/validaciones");
 const { aplicarValidaciones } = require("../middlewares/aplicar.validaciones");
 
+//Importo los controladores
+const { registrarUsuario } = require("../controllers/usuario.controller");
+
 //Ruta para crear un usuario
 router.post(
   "/api/usuario",
   validacionUsuario,
   aplicarValidaciones,
-  (req, res) => {
-    console.log("bien");
-  }
+  registrarUsuario
 );
 
 module.exports = router;
