@@ -17,11 +17,11 @@ const Proyecto = sequelize.define(
       allowNull: false,
     },
     fecha_inicial: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     fecha_final: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     estado_proyecto: {
@@ -44,3 +44,8 @@ Proyecto.sync({ force: false }).then(() => {
 });
 
 module.exports = Proyecto;
+
+const Tarea = require("./tarea.model");
+
+Proyecto.hasMany(Tarea, { foreignKey: "proyecto_id", as: "tareas" });
+Tarea.belongsTo(Proyecto, { foreignKey: "proyecto_id" });

@@ -39,4 +39,9 @@ Usuario.sync({ force: false }).then(() => {
   console.log("Tabla de usuarios creada");
 });
 
+const Proyecto = require("./proyecto.model");
+
+Usuario.hasMany(Proyecto, { foreignKey: "usuario_id", as: "proyectos" });
+Proyecto.belongsTo(Usuario, { foreignKey: "usuario_id" });
+
 module.exports = Usuario;
