@@ -16,11 +16,11 @@ const Tarea = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    categoria_tarea: {
+    complejidad_tarea: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    fecha_creacion: {
+    fecha_inializacon: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
