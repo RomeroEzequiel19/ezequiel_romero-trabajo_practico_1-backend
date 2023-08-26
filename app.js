@@ -22,9 +22,11 @@ app.use(
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// Configuración para archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
+
+//Importo la conexion a la base de datos
+const { conectarDB } = require("./database");
+conectarDB();
 
 // Configuración de rutas
 app.use(require("./routes/usuario.routes"));
