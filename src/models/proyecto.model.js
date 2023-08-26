@@ -34,14 +34,12 @@ const Proyecto = sequelize.define(
     },
   },
   {
-    timestamps: true,
+    timestamps: false,
     name: "proyectos",
   }
 );
 
-Proyecto.sync({ force: false }).then(() => {
-  console.log("Tabla de Proyectos creada");
-});
+Proyecto.sync();
 
 module.exports = Proyecto;
 

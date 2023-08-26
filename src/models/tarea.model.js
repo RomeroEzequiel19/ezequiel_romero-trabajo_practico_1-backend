@@ -20,7 +20,7 @@ const Tarea = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    fecha_inializacon: {
+    fecha_inicializacion: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
@@ -38,13 +38,11 @@ const Tarea = sequelize.define(
     },
   },
   {
-    timestamps: true,
+    timestamps: false,
     name: "tareas",
   }
 );
 
-Tarea.sync({ force: false }).then(() => {
-  console.log("Tabla de Tareas creada");
-});
+Tarea.sync();
 
 module.exports = Tarea;

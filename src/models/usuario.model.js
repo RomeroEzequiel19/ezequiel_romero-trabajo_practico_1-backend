@@ -17,7 +17,7 @@ const Usuario = sequelize.define(
       allowNull: false,
     },
     dni: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     nombre_usuario: {
@@ -34,14 +34,12 @@ const Usuario = sequelize.define(
     },
   },
   {
-    timestamps: true,
+    timestamps: false,
     name: "usuarios",
   }
 );
 
-Usuario.sync({ force: false }).then(() => {
-  console.log("Tabla de usuarios creada");
-});
+Usuario.sync();
 
 const Proyecto = require("./proyecto.model");
 
