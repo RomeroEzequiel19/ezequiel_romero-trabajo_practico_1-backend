@@ -102,7 +102,35 @@ Ctrl.modificarProyecto = async (req, res) => {
       };
     }
 
-    return res.status(200).json(proyectoActualizado);
+    return res.status(200).json({ message: "Proyecto actualizado" });
+  } catch (error) {
+    return res
+      .status(error.status || 500)
+      .json(error.message || "Error interno del servidor");
+  }
+};
+
+// Controlador para realizar un borrado lógico un proyecto
+Ctrl.eliminarProyecto = async (req, res) => {
+  const { proyecto_id } = req.params;
+
+  try {
+    const proyectoEliminado = await ModeloProyecto.update(
+      {
+        estado_proyecto: false,
+      },
+      {
+        where: {
+          proyecto_id,
+          estado_proyecto: true,
+        },
+      }
+    );
+
+    return res.json({
+      proyectoEliminado,
+      message: "Proyecto eliminado correctamente",
+    });
   } catch (error) {
     return res
       .status(error.status || 500)

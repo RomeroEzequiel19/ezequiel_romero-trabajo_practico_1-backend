@@ -10,6 +10,7 @@ const {
   obtenerProyectos,
   obtenerProyecto,
   modificarProyecto,
+  eliminarProyecto,
 } = require("../controllers/proyecto.controller");
 
 //Ruta para crear un proyecto
@@ -28,5 +29,8 @@ router.get("/api/proyecto/:proyecto_id", obtenerProyecto);
 
 //Ruta para modificar un proyecto
 router.put("/api/proyecto/:proyecto_id", modificarProyecto);
+
+//Ruta para eliminar lógicamente un proyecto
+router.delete("/api/proyecto/:proyecto_id", eliminarProyecto);
 
 module.exports = router;
