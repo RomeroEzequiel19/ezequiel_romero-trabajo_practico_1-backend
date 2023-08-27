@@ -59,4 +59,32 @@ validacion.validacionProyecto = [
     .withMessage("Debe ser un número entero"),
 ];
 
+//Validaciones para los campos al crear una nueva tarea
+validacion.validacionTarea = [
+  body("nombre_tarea")
+    .notEmpty()
+    .withMessage("Debe colocar un nombre para la tarea"),
+  body("descripcion_tarea")
+    .notEmpty()
+    .withMessage("Debe colocar una descripcion para la tarea"),
+  body("complejidad_tarea")
+    .notEmpty()
+    .withMessage("Debe colocar una complejidad para la tarea"),
+  body("fecha_inicializacion")
+    .notEmpty()
+    .withMessage("Debe colocar una fecha inicial para la tarea")
+    .isAfter()
+    .withMessage("La fecha inicial de la tarea debe estar en el futuro."),
+  body("fecha_finalizacion")
+    .notEmpty()
+    .withMessage("Debe colocar una fecha final para la tarea")
+    .isAfter()
+    .withMessage("La fecha final de la tarea debe estar en el futuro."),
+  body("estado_tarea")
+    .notEmpty()
+    .withMessage("Debe colocar el estado de la tarea")
+    .isInt()
+    .withMessage("Debe ser un número entero"),
+];
+
 module.exports = validacion;
