@@ -5,7 +5,10 @@ const { validacionTarea } = require("../middlewares/validaciones");
 const { aplicarValidaciones } = require("../middlewares/aplicar.validaciones");
 
 //Importo los controladores
-const { registrarTarea } = require("../controllers/tarea.controller");
+const {
+  registrarTarea,
+  obtenerTareas,
+} = require("../controllers/tarea.controller");
 
 //Ruta para crear una tarea
 router.post(
@@ -14,5 +17,8 @@ router.post(
   aplicarValidaciones,
   registrarTarea
 );
+
+//Ruta para obtener todas las tareas
+router.get("/api/tarea", obtenerTareas);
 
 module.exports = router;

@@ -33,4 +33,14 @@ Ctrl.registrarTarea = async (req, res) => {
   }
 };
 
+//Controlador para obtener todas las tareas
+Ctrl.obtenerTareas = async (_req, res) => {
+  try {
+    const listaTareas = await ModeloTarea.findAll();
+    return res.status(200).json(listaTareas);
+  } catch (error) {
+    return res.status(error.status || 500).json({ message: error.message });
+  }
+};
+
 module.exports = Ctrl;
