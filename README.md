@@ -1,10 +1,10 @@
-`#Trabajo Práctico de Backend`
+# Trabajo Práctico de Backend
 
 Para hacer uso del trabajo, deberás hacer lo siguente:
 
-`##Instalaciones necesarias:`
+## Instalaciones necesarias:
 
-Dentro del directorio del proyecto, ejecutar en la terminal:
+Dentro del directorio del proyecto, ejecutar en la terminal lo sigueinte para instalar las dependencias:
 
 ```bash
 npm install
@@ -12,7 +12,7 @@ npm install
 
 > > ### Requiere de una base de datos MySQL.
 
-`##Variables de entorno:`
+## Variables de entorno:
 
 ```bash
 PORT=
@@ -24,7 +24,9 @@ DB_PORT=
 DB_DIALECT=
 ```
 
-`##Ejecutar el proyecto en modo desarrollo:`
+## Ejecutar el proyecto en modo desarrollo:
+
+Para ejecutar el proyecto, debes colocar los siguiente en la terminal
 
 ```bash
 npm run dev
