@@ -47,7 +47,7 @@ Ctrl.obtenerProyectos = async (_req, res) => {
   }
 };
 
-//Controlador para obtener un usuario en específico
+//Controlador para obtener un proyecto en específico
 Ctrl.obtenerProyecto = async (req, res) => {
   try {
     const proyectoId = req.params.proyecto_id;
@@ -57,9 +57,56 @@ Ctrl.obtenerProyecto = async (req, res) => {
         as: "tareas",
       },
     });
+
+    if (!proyecto) {
+      return res.status(404).json({ message: "Proyecto no encontrado" });
+    }
+
     return res.status(200).json(proyecto);
   } catch (error) {
     return res.status(error.status || 500).json({ message: error.message });
+  }
+};
+
+// Controlador para actualizar un proyecto
+Ctrl.modificarProyecto = async (req, res) => {
+  const { proyecto_id } = req.params;
+  const { nombre_proyecto, descripcion_proyecto, fecha_inicial, fecha_final } =
+    req.body;
+
+  try {
+    const proyecto = await ModeloProyecto.findByPk(req.params.proyecto_id);
+    //Verificamos si existe el proyecto
+    if (!proyecto) {
+      return res.status(404).json({ message: "Proyecto no encontrado" });
+    }
+
+    const proyectoActualizado = await ModeloProyecto.update(
+      {
+        nombre_proyecto,
+        descripcion_proyecto,
+        fecha_inicial,
+        fecha_final,
+      },
+      {
+        where: {
+          proyecto_id,
+        },
+      }
+    );
+
+    if (!proyectoActualizado) {
+      throw {
+        status: 400,
+        message: "No se pudo actualizar la proyecto",
+      };
+    }
+
+    return res.status(200).json(proyectoActualizado);
+  } catch (error) {
+    return res
+      .status(error.status || 500)
+      .json(error.message || "Error interno del servidor");
   }
 };
 

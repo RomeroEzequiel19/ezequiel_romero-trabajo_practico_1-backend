@@ -9,6 +9,7 @@ const {
   registrarProyecto,
   obtenerProyectos,
   obtenerProyecto,
+  modificarProyecto,
 } = require("../controllers/proyecto.controller");
 
 //Ruta para crear un proyecto
@@ -24,5 +25,8 @@ router.get("/api/proyecto", obtenerProyectos);
 
 //Ruta para obtener un proyecto
 router.get("/api/proyecto/:proyecto_id", obtenerProyecto);
+
+//Ruta para modificar un proyecto
+router.put("/api/proyecto/:proyecto_id", modificarProyecto);
 
 module.exports = router;
