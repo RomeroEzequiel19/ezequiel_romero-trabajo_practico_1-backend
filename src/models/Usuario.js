@@ -32,18 +32,16 @@ const Usuario = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    estado_usuario: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   },
   {
     timestamps: false,
-    name: "usuarios",
   }
 );
 
 Usuario.sync();
-
-const Proyecto = require("./proyecto.model");
-
-Usuario.hasMany(Proyecto, { foreignKey: "usuario_id", as: "proyectos" });
-Proyecto.belongsTo(Usuario, { foreignKey: "usuario_id" });
 
 module.exports = Usuario;

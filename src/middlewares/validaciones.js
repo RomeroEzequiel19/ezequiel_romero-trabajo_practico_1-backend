@@ -8,7 +8,7 @@ validacion.validacionUsuario = [
     .notEmpty()
     .withMessage("Debe colocar su DNI")
     .isInt()
-    .withMessage("El DNI debe ser numérico")
+    .withMessage("El DNI debe ser numérico entero")
     .isLength({ min: 7 })
     .withMessage("El DNI debe ser de al menos 7 digitos")
     .isLength({ max: 9 })
@@ -25,6 +25,11 @@ validacion.validacionUsuario = [
     .notEmpty()
     .withMessage("Debe colocar una contraseña")
     .isLength({ min: 8 })
+    .withMessage("Debe tener al menos 8 caracteres"),
+  body("estado_usuario")
+    .notEmpty()
+    .withMessage("Debe colocar el estado del usuario")
+    .isLength({ min: 1 })
     .withMessage("Debe tener al menos 8 caracteres"),
 ];
 

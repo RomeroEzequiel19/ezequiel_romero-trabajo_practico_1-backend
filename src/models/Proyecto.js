@@ -1,4 +1,5 @@
 const { sequelize, DataTypes } = require("../database");
+const Usuario = require("./Usuario");
 
 const Proyecto = sequelize.define(
   "Proyecto",
@@ -35,15 +36,12 @@ const Proyecto = sequelize.define(
   },
   {
     timestamps: false,
-    name: "proyectos",
   }
 );
+
+Usuario.hasMany(Proyecto, { foreignKey: "usuario_id", as: "proyectos" });
+Proyecto.belongsTo(Usuario, { foreignKey: "usuario_id" });
 
 Proyecto.sync();
 
 module.exports = Proyecto;
-
-const Tarea = require("./tarea.model");
-
-Proyecto.hasMany(Tarea, { foreignKey: "proyecto_id", as: "tareas" });
-Tarea.belongsTo(Proyecto, { foreignKey: "proyecto_id" });

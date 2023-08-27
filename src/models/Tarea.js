@@ -1,4 +1,5 @@
 const { sequelize, DataTypes } = require("../database");
+const Proyecto = require("./Proyecto");
 
 const Tarea = sequelize.define(
   "Tarea",
@@ -39,9 +40,11 @@ const Tarea = sequelize.define(
   },
   {
     timestamps: false,
-    name: "tareas",
   }
 );
+
+Proyecto.hasMany(Tarea, { foreignKey: "proyecto_id", as: "tareas" });
+Tarea.belongsTo(Proyecto, { foreignKey: "proyecto_id" });
 
 Tarea.sync();
 
