@@ -5,7 +5,11 @@ const { validacionUsuario } = require("../middlewares/validaciones");
 const { aplicarValidaciones } = require("../middlewares/aplicar.validaciones");
 
 //Importo los controladores
-const { registrarUsuario } = require("../controllers/usuario.controller");
+const {
+  registrarUsuario,
+  obtenerUsuarios,
+  obtenerUsuario,
+} = require("../controllers/usuario.controller");
 
 //Ruta para crear un usuario
 router.post(
@@ -14,5 +18,11 @@ router.post(
   aplicarValidaciones,
   registrarUsuario
 );
+
+//Ruta para obtener todos los usuarios
+router.get("/api/usuario", obtenerUsuarios);
+
+//Ruta para obtener un usuario
+router.get("/api/usuario/:usuario_id", obtenerUsuario);
 
 module.exports = router;
