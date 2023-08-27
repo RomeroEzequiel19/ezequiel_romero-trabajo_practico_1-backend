@@ -8,6 +8,7 @@ const { aplicarValidaciones } = require("../middlewares/aplicar.validaciones");
 const {
   registrarProyecto,
   obtenerProyectos,
+  obtenerProyecto,
 } = require("../controllers/proyecto.controller");
 
 //Ruta para crear un proyecto
@@ -20,5 +21,8 @@ router.post(
 
 //Ruta para obtener todos los proyectos
 router.get("/api/proyecto", obtenerProyectos);
+
+//Ruta para obtener un proyecto
+router.get("/api/proyecto/:proyecto_id", obtenerProyecto);
 
 module.exports = router;

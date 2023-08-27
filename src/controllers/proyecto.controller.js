@@ -47,4 +47,20 @@ Ctrl.obtenerProyectos = async (_req, res) => {
   }
 };
 
+//Controlador para obtener un usuario en específico
+Ctrl.obtenerProyecto = async (req, res) => {
+  try {
+    const proyectoId = req.params.proyecto_id;
+    const proyecto = await ModeloProyecto.findByPk(proyectoId, {
+      include: {
+        model: ModeloTarea,
+        as: "tareas",
+      },
+    });
+    return res.status(200).json(proyecto);
+  } catch (error) {
+    return res.status(error.status || 500).json({ message: error.message });
+  }
+};
+
 module.exports = Ctrl;
