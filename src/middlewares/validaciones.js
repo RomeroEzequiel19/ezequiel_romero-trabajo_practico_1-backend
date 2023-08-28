@@ -47,7 +47,7 @@ validacion.validacionProyecto = [
     .notEmpty()
     .withMessage("Debe colocar una fecha inicial para el proyecto")
     .isAfter()
-    .withMessage("La fecha final del proyecto debe estar en el futuro."),
+    .withMessage("La fecha inicial del proyecto debe estar en el futuro."),
   body("fecha_final")
     .notEmpty()
     .withMessage("Debe colocar una fecha final para el proyecto")

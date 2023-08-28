@@ -78,7 +78,7 @@ Ctrl.obtenerUsuarios = async (_req, res) => {
       },
     });
 
-    //Si no se encuenta a los usuarios
+    //Si no se encuentra a los usuarios
     if (!usuarios) {
       throw {
         status: 400,
@@ -107,7 +107,7 @@ Ctrl.obtenerUsuario = async (req, res) => {
       },
     });
 
-    //Si no se encuenta el usuario
+    //Si no se encuentra el usuario
     if (!usuario) {
       throw {
         status: 400,

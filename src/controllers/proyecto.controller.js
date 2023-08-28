@@ -172,7 +172,6 @@ Ctrl.eliminarProyecto = async (req, res) => {
 
     //Retorno el id eliminado y un mensaje
     return res.json({
-      proyectoEliminado,
       message: "Proyecto eliminado correctamente",
     });
   } catch (error) {
