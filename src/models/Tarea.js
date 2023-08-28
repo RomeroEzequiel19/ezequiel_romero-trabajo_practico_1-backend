@@ -1,6 +1,8 @@
+//Importo base de datos y modelo a relacionar
 const { sequelize, DataTypes } = require("../database");
 const Proyecto = require("./Proyecto");
 
+//Defino el modelo de la tarea
 const Tarea = sequelize.define(
   "Tarea",
   {
@@ -43,9 +45,12 @@ const Tarea = sequelize.define(
   }
 );
 
+//Realizo la relacion de uno a muchos de la tabla Proyecto a Tarea
 Proyecto.hasMany(Tarea, { foreignKey: "proyecto_id", as: "tareas" });
 Tarea.belongsTo(Proyecto, { foreignKey: "proyecto_id" });
 
+//Crea la tabla si no está creada
 Tarea.sync();
 
+//Exporto el modulo
 module.exports = Tarea;

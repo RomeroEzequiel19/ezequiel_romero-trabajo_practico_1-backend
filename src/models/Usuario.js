@@ -1,5 +1,7 @@
+//Importo base de datos
 const { sequelize, DataTypes } = require("../database");
 
+//Defino el modelo del usuario
 const Usuario = sequelize.define(
   "Usuario",
   {
@@ -42,6 +44,8 @@ const Usuario = sequelize.define(
   }
 );
 
+//Crea la tabla si no está creada
 Usuario.sync();
 
+//Exporto el modelo
 module.exports = Usuario;
