@@ -1,3 +1,4 @@
+//Importo la dependencia para validar
 const { body } = require("express-validator");
 const validacion = {};
 
@@ -30,8 +31,8 @@ validacion.validacionUsuario = [
   body("estado_usuario")
     .notEmpty()
     .withMessage("Debe colocar el estado del usuario")
-    .isLength({ min: 1 })
-    .withMessage("Debe tener al menos 8 caracteres"),
+    .isBoolean()
+    .withMessage("Debe ser un valor booleano"),
 ];
 
 //Validaciones para los campos al crear un nuevo proyecto
@@ -55,8 +56,8 @@ validacion.validacionProyecto = [
   body("estado_proyecto")
     .notEmpty()
     .withMessage("Debe colocar el estado del proyecto")
-    .isInt()
-    .withMessage("Debe ser un número entero"),
+    .isBoolean()
+    .withMessage("Debe ser un valor booleano"),
 ];
 
 //Validaciones para los campos al crear una nueva tarea
@@ -83,8 +84,9 @@ validacion.validacionTarea = [
   body("estado_tarea")
     .notEmpty()
     .withMessage("Debe colocar el estado de la tarea")
-    .isInt()
-    .withMessage("Debe ser un número entero"),
+    .isBoolean()
+    .withMessage("Debe ser un valor booleano"),
 ];
 
+//Exporto la validacion
 module.exports = validacion;

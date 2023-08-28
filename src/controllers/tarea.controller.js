@@ -6,6 +6,7 @@ const ModeloTarea = require("../models/Tarea");
 
 //Controlador para registrar una tarea
 Ctrl.registrarTarea = async (req, res) => {
+  //Requiero los datos
   const {
     nombre_tarea,
     descripcion_tarea,
@@ -16,6 +17,7 @@ Ctrl.registrarTarea = async (req, res) => {
   } = req.body;
 
   try {
+    //Creo la tarea relacionándola con el proyecto
     const nuevaTarea = await ModeloTarea.create({
       nombre_tarea,
       descripcion_tarea,
@@ -25,6 +27,16 @@ Ctrl.registrarTarea = async (req, res) => {
       estado_tarea,
       proyecto_id: req.params.proyecto_id,
     });
+
+    //En caso de que no se puede crear la tarea
+    if (!nuevaTarea) {
+      throw {
+        status: 400,
+        message: "No se pudo crear la tarea",
+      };
+    }
+
+    //Retorno la tarea creada
     return res.status(201).json(nuevaTarea);
   } catch (error) {
     return res.status(500).json({

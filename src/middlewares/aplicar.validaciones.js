@@ -1,5 +1,7 @@
+//Importo la dependencia para validar
 const { validationResult } = require("express-validator");
 
+//Verifica si hay errores en las validaciones
 const aplicarValidaciones = (req, res, next) => {
   const errores = validationResult(req);
 
@@ -10,4 +12,5 @@ const aplicarValidaciones = (req, res, next) => {
   next();
 };
 
+//exporto la funcion
 module.exports = { aplicarValidaciones };
